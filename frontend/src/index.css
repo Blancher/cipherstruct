@@ -150,6 +150,7 @@ button, .select {
   border: 3px inset black;
   border-radius: 5px;
   font-size: 20px;
+  color: black;
 }
 
 .ciphers {
@@ -278,6 +279,11 @@ input {
 
 .use button, .use select {
   margin: 5px;
+}
+
+#changedtext {
+  text-align: center;
+  margin-top: 100px;
 }
 
 #changedtext {
