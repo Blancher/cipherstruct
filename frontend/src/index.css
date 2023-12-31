@@ -272,6 +272,8 @@ input {
 }
 
 .use {
+  display: flex;
+  flex-wrap: nowrap;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -279,11 +281,6 @@ input {
 
 .use button, .use select {
   margin: 5px;
-}
-
-#changedtext {
-  text-align: center;
-  margin-top: 100px;
 }
 
 #changedtext {
