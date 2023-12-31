@@ -36,7 +36,12 @@ export default function NewCipher() {
         <div className='animate'>
             <h1 className='page'>New Cipher</h1>
             {isLoading && <Loading/>}
-            {error && <p className='error'>{error}</p>}
+            {error && typeof error === 'object' && (
+                <>
+                    {error.map(message => <p className='error'>{message}</p>)}
+                </>
+            )}
+            {error && typeof error === 'string' && <p className='error'>{error}</p>}
             {!isLoading && (
                 <form onSubmit={handleSubmit}>
                     <Input classes={titleInputClasses} invalid={titleInvalid} message='Title length must be between 1 and 15 characters.' inputType='text' placeholder='Title' value={titleInput} onChange={handleTitleChange} onBlur={handleTitleBlur}/>
