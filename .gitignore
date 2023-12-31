@@ -1,0 +1,9 @@
+/backend/node_modules
+/backend/.env
+/backend/package-lock.json
+/backend/.gitignore
+/frontend/node_modules
+/frontend/.env
+/frontend/.env.production
+/frontend/package-lock.json
+/frontend/.gitignore
