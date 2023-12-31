@@ -52,7 +52,12 @@ export default function NewCipher() {
     return (
         <div className='animate'>
             {isLoading && <Loading/>}
-            {error && <p className='error'>{error}</p>}
+            {error && typeof error === 'object' && (
+                <>
+                    {error.map(message => <p className='error'>{message}</p>)}
+                </>
+            )}
+            {error && typeof error === 'string' && <p className='error'>{error}</p>}
             {!isLoading && (
                 <>
                     <h1 className='page'>Update {cipherTitle}</h1>
