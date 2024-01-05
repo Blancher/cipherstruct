@@ -37,7 +37,7 @@ export default function Ciphers() {
         <div className='animate'>
             <h1 className='page'>Home</h1>
             <p id='desc'>Welcome to Cipherstruct! Cipherstruct is a website for creating ciphers that can be used to encrypt and decrypt strings. To create a cipher, you can pass an encryption string that will shift each character a certain number of letters forward or backward in the alphabet. The string should have a pattern of either a plus or minus symbol followed by a single-digit number, looking something like <i>+6-3+7+4-5</i>. The sum of all the numbers in the string must be between -26 and 26.</p>
-            <motion.button style={{opacity: ctx.isLoggedIn ? 1 : 0}} onClick={handleCreateCipher} whileHover={{scale: 1.1}} className='button'>Create Cipher</motion.button>
+            <motion.button style={{opacity: ctx.isLoggedIn ? 1 : 0, visibility: ctx.isLoggedIn ? 'visible' : 'hidden'}} onClick={handleCreateCipher} whileHover={{scale: 1.1}} className='button'>Create Cipher</motion.button>
             {isLoading && <Loading/>}
             {error && <p className='error'>{error}</p>}
             {!isLoading && !error && ciphers.length === 0 && <h2 className='center displaycard'>No ciphers.</h2>}
