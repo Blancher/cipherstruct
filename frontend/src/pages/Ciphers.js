@@ -12,6 +12,7 @@ export default function Ciphers() {
     const [isLoading, error, sendRequest] = useHttp();
     const [reload, setReload] = useState(false);
     const [ciphers, setCiphers] = useState([]);
+    const [empty, setEmpty] = useState(false);
     
     const handleReload = () => setReload(prev => !prev);
     const handleCreateCipher = () => navigate('/cipher/new');
@@ -26,8 +27,9 @@ export default function Ciphers() {
 
     useEffect(() => {
         const dataFetcher = async() => {
+            setEmpty(false);
             const response = await sendRequest('cipher');
-            setCiphers(response.ciphers);
+            response.ciphers.length === 0 ? setEmpty(true) : setCiphers(response.ciphers);
         };
 
         dataFetcher();
@@ -40,7 +42,7 @@ export default function Ciphers() {
             <motion.button style={{opacity: ctx.isLoggedIn ? 1 : 0, visibility: ctx.isLoggedIn ? 'visible' : 'hidden'}} onClick={handleCreateCipher} whileHover={{scale: 1.1}} className='button'>Create Cipher</motion.button>
             {isLoading && <Loading/>}
             {error && <p className='error'>{error}</p>}
-            {!isLoading && !error && ciphers.length === 0 && <h2 className='center displaycard'>No ciphers.</h2>}
+            {empty && <h2 className='center displaycard'>No ciphers.</h2>}
             {ciphers.length > 0 && (
                 <div className='ciphers flex'>
                     {ciphers.map(cipher => <CipherCard use onReload={handleReload} onDelete={handleDelete} {...cipher}/>)}
